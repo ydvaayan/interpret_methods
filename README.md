@@ -14,7 +14,7 @@ pip install saliency
 pip install grad-cam
 ```
 
-To Run DeepLift or GuidedBackprop make changes in `run.py`
+To Run DeepLift, GuidedBackprop or IntegratedGradients make changes in `run.py`
  Example:
 ```python
 from scripts import ImpDeepLift
@@ -36,7 +36,7 @@ Use `saliency()` instead of `visualise` if you want to return the saliency tenso
 
 To implement SmoothGrad with say DeepLift (for example)
 
-``python
+```python
     sg= ImpSmoothGrad(model, input_path,'DeepLift')
     sg.visualise()
 ```
