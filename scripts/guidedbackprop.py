@@ -5,12 +5,12 @@ from captum.attr import GuidedBackprop
 
 
 class ImpGuidedBackprop():
-    def __init__(self, model, inp_path):
+    def __init__(self, model, input_matrix):
         self.model = model
-        self.inp_path = inp_path
+        self.input_matrix = input_matrix
     
     def attribute(self):
-        inp, baseline = img2tensor(self.inp_path)
+        inp, baseline = img2tensor(self.input_matrix)
         gb = GuidedBackprop(self.model)
         attributions_gb = gb.attribute(inp, target=0)
         return attributions_gb

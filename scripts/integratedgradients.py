@@ -12,7 +12,8 @@ class ImpIntegratedGradients():
     def attribute(self):
         inp, baseline = img2tensor(self.inp_path)
         ig = IntegratedGradients(self.model)
-        attributions_ig, delta = ig.attribute(inp, baseline, target=0, return_convergence_delta=True)
+        
+        attributions_ig, delta = ig.attribute(inp, baseline, target=236, return_convergence_delta=True)
         return attributions_ig
     
     def saliency(self):

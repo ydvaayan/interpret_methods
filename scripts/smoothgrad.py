@@ -6,9 +6,9 @@ import importlib
 
 
 class ImpSmoothGrad():
-    def __init__(self, model, inp_path, method_name):
+    def __init__(self, model, inp_matrix, method_name):
         self.model = model
-        self.inp_path = inp_path
+        self.inp_matrix = inp_matrix
         self.method_name=method_name
         if self.method_name=='GradCAM':
             module=importlib.import_module("pytorch_grad_cam")
@@ -17,7 +17,7 @@ class ImpSmoothGrad():
         self.method=getattr(module,self.method_name)
     
     def attribute(self):
-        inp, baseline = img2tensor(self.inp_path)
+        inp, baseline = img2tensor(self.inp_matrix)
         m=self.method(self.model)
         sg = NoiseTunnel(m)
         attributions_sg = sg.attribute(inp, target=0)
